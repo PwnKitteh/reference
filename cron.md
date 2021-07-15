@@ -6,6 +6,7 @@ background: bg-red-500
 tags:
     - schedule
     - crontab
+    - time
 categories:
     - Linux Command
 intro: |

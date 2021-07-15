@@ -4,8 +4,9 @@ date: 2021-07-01 10:51:44
 icon: icon-permission
 background: bg-green-600
 tags:
+    - permission
 categories:
-  - Linux Command
+    - Linux Command
 intro: |
     This quick reference cheat sheet provides a brief overview of file permissions, and the operation of the chmod command
 ---
@@ -61,13 +62,13 @@ drwxr-xr-x  2 root root 2 Jun 30 18:06 dir
 ```
 #### Permission analysis of "dir"
 ```text
-d   rwx  r-x  r-x
-┬   ─┬─  ─┬─  ─┬─  
-│    │    │    │  
-│    │    │    └─ Other｜5 (4+0+1)
-│    │    └────── Group｜5 (4+0+1)
-│    └─────────── User ｜7 (4+2+1)
-└──────────────── File Type | directory
+d  rwx  r-x  r-x
+┬  ─┬─  ─┬─  ─┬─  
+│   │    │    │  
+│   │    │    └─ 4. Other｜5 (4+0+1)
+│   │    └────── 3. Group｜5 (4+0+1)
+│   └─────────── 2. User ｜7 (4+2+1)
+└─────────────── 1. File Type | directory
 ```
 
 
@@ -176,19 +177,19 @@ $ chmod =rwx,g+s chmodExampleScript.sh
 ### Removing Permissions  {.row-span-3}
 In order to remove read write permissions given to a file, use the following syntax:
 ```shell
-chmod o-rw example.txt
+$ chmod o-rw example.txt
 ```
 For our file example.txt, we can remove read write permissions using chmod for group by running the following command:
 ```shell
-chmod  g-rx example.txt
+$ chmod  g-rx example.txt
 ```
 To remove chmod read write permissions from the group while adding read write permission to public/others, we can use the following command:
 ```shell
-chmod g-rx, o+rx example.txt
+$ chmod g-rx, o+rx example.txt
 ```
 But, if you wish to remove all permissions for group and others, you can do so using the go= instead:
 ```shell
-chmod go= example.txt
+$ chmod go= example.txt
 ```
 
 ### Executable
@@ -205,6 +206,36 @@ $ chmod u=rwx,g=rx,o=r foo.sh
 ```
 
 
+
+Practices {.cols-3}
+---------------
+
+### SSH Permissions
+```shell script
+$ chmod 700 ~/.ssh
+$ chmod 600 ~/.ssh/authorized_keys
+$ chmod 600 ~/.ssh/id_rsa
+$ chmod 600 ~/.ssh/id_rsa.pub
+$ chmod 400 /path/to/access_key.pem
+```
+
+### Web Permissions
+```shell script
+$ chmod -R 644 /var/www/html/
+$ chmod 644 .htaccess
+$ chmod 644 robots.txt
+$ chmod 755 /var/www/uploads/
+$ chmod 755 `find /var/www/html -type d`
+```
+
+### Batch Change
+```shell script
+$ chmod -R 644 /your_path
+$ find /path -type d -exec chmod 755 {} \;
+$ find /path -type f -exec chmod 644 {} \;
+$ chmod 644 `find /your_path -type f`
+```
+See: [Command Substitution](https://tldp.org/LDP/abs/html/commandsub.html)
 
 
 ## Also see

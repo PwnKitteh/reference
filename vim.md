@@ -5,9 +5,10 @@ icon: icon-vim
 background: bg-green-600
 tags: 
     - vi
+    - text
     - editor
     - terminal
-    - text
+    - shortcut
 categories:
     - Toolkit
 intro: |
@@ -100,7 +101,7 @@ G gg H M L k j ▶ print("to")
 
 | Shortcut                | Description                 |
 |-------------------------|-----------------------------|
-| `H` _/_ `M`_/_ `L`      | Top/Middle/Bottom screen    |
+| `H` _/_ `M` _/_ `L`     | Top/Middle/Bottom screen    |
 | `zt` _/_ `zz` _/_  `zb` | Top/Center/Bottom this line |
 {.shortcuts}
 
